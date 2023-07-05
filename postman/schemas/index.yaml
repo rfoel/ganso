@@ -1,0 +1,294 @@
+openapi: "3.0.0"
+info:
+    version: "0.0.0"
+    title: "Ganso API"
+    description: Goosechase Full-Stack Take-Home Challenge
+
+paths:
+    /games:
+        post:
+            summary: Create a game
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/GameInput"
+            responses:
+                "201":
+                    description: The game created
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Game"
+                422:
+                    description: Bad request for the game creation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Error"
+                500:
+                    description: Unexpected error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Error"
+        get:
+            summary: List games
+            responses:
+                "200":
+                    description: List of all games
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Games"
+                422:
+                    description: Bad request for the game listing
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Error"
+                500:
+                    description: Unexpected error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Error"
+    /games/{gameId}:
+        parameters:
+            - name: gameId
+              description: The unique identifier of the game
+              in: path
+              required: true
+              schema:
+                  $ref: "#/components/schemas/GameId"
+        get:
+            summary: Show details for a single game
+            responses:
+                "200":
+                    description: The game corresponding to the provided `gameId`
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Game"
+                404:
+                    description: No game found for the provided `gameId`
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Error"
+                422:
+                    description: Bad request for the game getter
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Error"
+                500:
+                    description: Unexpected error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Error"
+    /games/{gameId}/missions:
+        parameters:
+            - name: gameId
+              description: The unique identifier of the game
+              in: path
+              required: true
+              schema:
+                  $ref: "#/components/schemas/GameId"
+        get:
+            summary: List missions for a game
+            responses:
+                "200":
+                    description: List of missions for the provided `gameId`
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Missions"
+                404:
+                    description: No game found for the provided `gameId`
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Error"
+                422:
+                    description: Bad request for the mission list
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Error"
+                500:
+                    description: Unexpected error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Error"
+        post:
+            summary: Add a mission to a game
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/MissionInput"
+            responses:
+                "200":
+                    description: The mission created
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Mission"
+                404:
+                    description: No game found for the provided `gameId`
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Error"
+                422:
+                    description: Bad request for the mission creation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Error"
+                500:
+                    description: Unexpected error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Error"
+    /games/{gameId}/missions/{missionId}:
+        parameters:
+            - name: gameId
+              description: The unique identifier of the game
+              in: path
+              required: true
+              schema:
+                  $ref: "#/components/schemas/GameId"
+            - name: missionId
+              description: The unique identifier of the mission
+              in: path
+              required: true
+              schema:
+                  $ref: "#/components/schemas/MissionId"
+        get:
+            summary: Show details for a single mission
+            responses:
+                "200":
+                    description: The mission corresponding to the provided `missionId`
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Mission"
+                404:
+                    description: No mission found for the provided `missionId`
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Error"
+                422:
+                    description: Bad request for the mission getter
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Error"
+                500:
+                    description: Unexpected error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Error"
+
+components:
+    schemas:
+        GameId:
+            description: The unique identifier of a game
+            type: integer
+        Game:
+            type: object
+            required:
+                - id
+                - name
+                - description
+            properties:
+                id:
+                    $ref: "#/components/schemas/GameId"
+                name:
+                    type: string
+                description:
+                    type: string
+        GameInput:
+            type: object
+            required:
+                - name
+                - description
+            properties:
+                name:
+                    type: string
+                description:
+                    type: string
+        Games:
+            type: array
+            items:
+                $ref: "#/components/schemas/Game"
+        MissionId:
+            description: The unique identifier of a mission
+            type: integer
+        Mission:
+            type: object
+            required:
+                - id
+                - name
+                - description
+                - points
+                - category
+                - gameId
+            properties:
+                id:
+                    $ref: "#/components/schemas/MissionId"
+                name:
+                    type: string
+                description:
+                    type: string
+                points:
+                    type: integer
+                category:
+                    type: string
+                    enum:
+                        - text
+                        - photo+video
+                        - gps
+                gameId:
+                    type: integer
+        MissionInput:
+            type: object
+            required:
+                - name
+                - description
+                - points
+                - category
+            properties:
+                name:
+                    type: string
+                description:
+                    type: string
+                points:
+                    type: integer
+                category:
+                    type: string
+                    enum:
+                        - text
+                        - photo+video
+                        - gps
+        Missions:
+            type: array
+            items:
+                $ref: "#/components/schemas/Mission"
+        Error:
+            type: object
+            required:
+                - message
+            properties:
+                message:
+                    description: A human readable error message
+                    type: string
