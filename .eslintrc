@@ -1,0 +1,34 @@
+{
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["@typescript-eslint", "prettier"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "env": {
+    "node": true,
+    "browser": true
+  },
+  "rules": {
+    "@typescript-eslint/no-unsafe-assignment": ["off"],
+    "@typescript-eslint/no-misused-promises": ["off"],
+    "@typescript-eslint/no-unsafe-argument": ["off"],
+    "@typescript-eslint/no-explicit-any": ["off"],
+    "prettier/prettier": [
+      "error",
+      {
+        "bracketSpacing": true,
+        "printWidth": 80,
+        "semi": false,
+        "singleQuote": true,
+        "trailingComma": "all",
+        "arrowParens": "always",
+        "endOfLine": "auto"
+      }
+    ]
+  }
+}

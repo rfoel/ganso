@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = env("DB_URL")
+}
+
+model Game {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name String
+  description String
+  missions Mission[]
+}
+
+model Mission {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name String
+  description String
+  points Int
+  category Category 
+  gameId  Int
+  game Game @relation(fields: [gameId], references: [id])
+  @@unique([id, gameId])
+}
+
+enum Category {
+	TEXT @map("text")
+	PHOTO_AND_VIDEO @map("photo+video")
+	GPS @map("gps")
+}
