@@ -12,7 +12,7 @@ export default class Mission {
     readonly description: string,
     readonly points: number,
     readonly category: Category,
-    readonly game: Game,
+    readonly game?: Game,
     id?: number,
   ) {
     if (id) this.id = id

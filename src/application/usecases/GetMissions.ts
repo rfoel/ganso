@@ -6,12 +6,16 @@ export default class GetMissions {
 
   async execute(gameId: number): Promise<Omit<Mission, 'game'>[]> {
     const missions = await this.missionRepository.list(gameId)
-    return missions.map((mission) => ({
-      category: mission.category,
-      description: mission.description,
-      name: mission.name,
-      points: mission.points,
-      id: mission.id,
-    }))
+    return missions.map(
+      (mission) =>
+        new Mission(
+          mission.name,
+          mission.description,
+          mission.points,
+          mission.category,
+          undefined,
+          mission.id,
+        ),
+    )
   }
 }

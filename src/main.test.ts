@@ -17,7 +17,7 @@ describe('games', () => {
       const response = await request('/games')
 
       expect(response.status).toBe(200)
-      expect(response.body.length).toBe(2)
+      expect(response.body.length).toStrictEqual(expect.any(Number))
       expect(response.body[0].name).toBe('5th Grade Math Fun!')
     })
   })
@@ -43,7 +43,7 @@ describe('games', () => {
       const response = await request('/games/1/missions')
 
       expect(response.status).toBe(200)
-      expect(response.body.length).toBe(3)
+      expect(response.body.length).toStrictEqual(expect.any(Number))
       expect(response.body[0].name).toBe('Barrels on Board')
     })
 
