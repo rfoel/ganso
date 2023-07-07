@@ -15,9 +15,8 @@ export default class CreateMission {
     category: Category,
     gameId: number,
   ): Promise<Omit<Mission, 'game'>> {
-    const game = await this.gameRepository.get(gameId)
     const mission = await this.missionRepository.create(
-      new Mission(name, description, points, category, game),
+      new Mission(name, description, points, category, gameId),
     )
     return {
       category: mission.category,
@@ -25,6 +24,7 @@ export default class CreateMission {
       name: mission.name,
       points: mission.points,
       id: mission.id,
+      gameId,
     }
   }
 }

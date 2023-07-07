@@ -1,5 +1,4 @@
-import { PrismaClient } from '@prisma/client'
-import { Prisma } from '@prisma/client'
+import { Prisma, PrismaClient } from '@prisma/client'
 
 import Game from 'domain/entity/game'
 import GameRepository from 'domain/repository/game'
@@ -21,7 +20,7 @@ export default class GameRepositoryPrisma implements GameRepository {
   }
 
   async list(): Promise<Game[]> {
-    const result = await prisma.game.findMany()
+    const result = await prisma.game.findMany({ orderBy: { id: 'asc' } })
     return result.map((item) => new Game(item.name, item.description, item.id))
   }
 

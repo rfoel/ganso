@@ -1,7 +1,12 @@
 import Game from 'domain/entity/game'
 import GameRepository from 'domain/repository/game'
+// import GameRepositoryPrisma from 'infra/repository/prisma/game'
+import GameRepositoryDynamoDB from 'infra/repository/dynamoDB/game'
 
-export default class GameRepositoryDatabase implements GameRepository {
+// const gameRepository = new GameRepositoryPrisma()
+const gameRepository = new GameRepositoryDynamoDB()
+
+class GameRepositoryDatabase implements GameRepository {
   constructor(readonly repository: GameRepository) {}
 
   async get(id: number): Promise<Game> {
@@ -16,3 +21,5 @@ export default class GameRepositoryDatabase implements GameRepository {
     return this.repository.create(game)
   }
 }
+
+export default new GameRepositoryDatabase(gameRepository)

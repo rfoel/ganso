@@ -1,5 +1,3 @@
-import Game from './game'
-
 export const categories = ['text', 'photo+video', 'gps'] as const
 
 export type Category = (typeof categories)[number]
@@ -12,7 +10,7 @@ export default class Mission {
     readonly description: string,
     readonly points: number,
     readonly category: Category,
-    readonly game?: Game,
+    readonly gameId: number,
     id?: number,
   ) {
     if (id) this.id = id

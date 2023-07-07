@@ -18,7 +18,10 @@ describe('games', () => {
 
       expect(response.status).toBe(200)
       expect(response.body.length).toStrictEqual(expect.any(Number))
-      expect(response.body[0].name).toBe('5th Grade Math Fun!')
+      expect(response.body).toStrictEqual([
+        expect.objectContaining({ id: 1, name: '5th Grade Math Fun!' }),
+        expect.objectContaining({ id: 2, name: 'Toronto landmark hunt' }),
+      ])
     })
   })
 
@@ -35,39 +38,6 @@ describe('games', () => {
 
       expect(response.status).toBe(404)
       expect(response.body.message).toBe('No Game found')
-    })
-  })
-
-  describe('GET /games/:id/missions', () => {
-    it('responds with a 200 status code and list missions from a game', async () => {
-      const response = await request('/games/1/missions')
-
-      expect(response.status).toBe(200)
-      expect(response.body.length).toStrictEqual(expect.any(Number))
-      expect(response.body[0].name).toBe('Barrels on Board')
-    })
-
-    it('responds with a 404 status code if a game does not exist', async () => {
-      const response = await request('/games/123456')
-
-      expect(response.status).toBe(404)
-      expect(response.body.message).toBe('No Game found')
-    })
-  })
-
-  describe('GET /games/:id/missions/:missionId', () => {
-    it('responds with a 200 status code and the details of a mission', async () => {
-      const response = await request('/games/1/missions/1')
-
-      expect(response.status).toBe(200)
-      expect(response.body.name).toBe('Barrels on Board')
-    })
-
-    it('responds with a 404 status code if a mission does not exist', async () => {
-      const response = await request('/games/1/missions/123456')
-
-      expect(response.status).toBe(404)
-      expect(response.body.message).toBe('No Mission found')
     })
   })
 
@@ -94,6 +64,54 @@ describe('games', () => {
       expect(response.status).toBe(422)
       expect(response.body.code).toStrictEqual(expect.any(String))
       expect(response.body.field).toBe('description')
+    })
+  })
+})
+
+describe('missions', () => {
+  describe('GET /games/:id/missions', () => {
+    it('responds with a 200 status code and list missions from a game', async () => {
+      const response = await request('/games/1/missions')
+
+      expect(response.status).toBe(200)
+      expect(response.body.length).toStrictEqual(expect.any(Number))
+      expect(response.body).toStrictEqual([
+        expect.objectContaining({
+          id: 1,
+          name: 'Barrels on Board',
+        }),
+        expect.objectContaining({
+          id: 2,
+          name: 'If you Sailed on the Mayflower',
+        }),
+        expect.objectContaining({
+          id: 3,
+          name: 'Groovy Potatoes',
+        }),
+      ])
+    })
+
+    it('responds with a 404 status code if a game does not exist', async () => {
+      const response = await request('/games/123456')
+
+      expect(response.status).toBe(404)
+      expect(response.body.message).toBe('No Game found')
+    })
+  })
+
+  describe('GET /games/:id/missions/:missionId', () => {
+    it('responds with a 200 status code and the details of a mission', async () => {
+      const response = await request('/games/1/missions/1')
+
+      expect(response.status).toBe(200)
+      expect(response.body.name).toBe('Barrels on Board')
+    })
+
+    it('responds with a 404 status code if a mission does not exist', async () => {
+      const response = await request('/games/1/missions/123456')
+
+      expect(response.status).toBe(404)
+      expect(response.body.message).toBe('No Mission found')
     })
   })
 

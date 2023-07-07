@@ -1,3 +1,4 @@
+import Game from 'domain/entity/game'
 import Mission from 'domain/entity/mission'
 import MissionRepository from 'domain/repository/mission'
 
@@ -13,7 +14,7 @@ export default class GetMissions {
           mission.description,
           mission.points,
           mission.category,
-          undefined,
+          gameId,
           mission.id,
         ),
     )

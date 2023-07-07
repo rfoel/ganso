@@ -1,7 +1,12 @@
 import Mission from 'domain/entity/mission'
 import MissionRepository from 'domain/repository/mission'
+// import MissionRepositoryPrisma from 'infra/repository/prisma/mission'
+import MissionRepositoryDynamoDB from 'infra/repository/dynamoDB/mission'
 
-export default class MissionRepositoryDatabase implements MissionRepository {
+// const missionRepository = new MissionRepositoryPrisma()
+const missionRepository = new MissionRepositoryDynamoDB()
+
+class MissionRepositoryDatabase implements MissionRepository {
   constructor(readonly repository: MissionRepository) {}
 
   async get(gameId: number, missionId: number): Promise<Mission> {
@@ -16,3 +21,5 @@ export default class MissionRepositoryDatabase implements MissionRepository {
     return this.repository.create(mission)
   }
 }
+
+export default new MissionRepositoryDatabase(missionRepository)

@@ -2,14 +2,12 @@ import { beforeAll, describe, expect, it } from 'vitest'
 
 import CreateGame from 'application/usecases/CreateGame'
 import Game from 'domain/entity/game'
-import GameRepositoryPrisma from 'infra/repository/prisma/game'
+import gameRepository from 'infra/repository/game'
 
 describe('Use case - CreateGame', () => {
-  let gameRepository: GameRepositoryPrisma
   let usecase: CreateGame
 
   beforeAll(() => {
-    gameRepository = new GameRepositoryPrisma()
     usecase = new CreateGame(gameRepository)
   })
 

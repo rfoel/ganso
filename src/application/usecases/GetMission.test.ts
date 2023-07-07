@@ -1,15 +1,13 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 
 import Mission from 'domain/entity/mission'
-import MissionRepositoryPrisma from 'infra/repository/prisma/mission'
+import missionRepository from 'infra/repository/mission'
 import GetMission from 'application/usecases/GetMission'
 
 describe('Use case - GetMission', () => {
-  let missionRepository: MissionRepositoryPrisma
   let usecase: GetMission
 
   beforeAll(() => {
-    missionRepository = new MissionRepositoryPrisma()
     usecase = new GetMission(missionRepository)
   })
 
@@ -21,14 +19,9 @@ describe('Use case - GetMission', () => {
       points: 100,
       category: 'text',
       id: 1,
-      game: {
-        description:
-          "Let's have some fun by going on a hunt! Solve these math problems and earn points along the way!",
-        id: 1,
-        name: '5th Grade Math Fun!',
-      },
+      gameId: 1,
     } satisfies Mission
-    const mission = await usecase.execute(input.game.id, input.id)
+    const mission = await usecase.execute(input.gameId, input.id)
     expect(mission).toMatchObject({
       id: input.id,
       name: input.name,

@@ -15,6 +15,7 @@ export default class GetMission {
       name: mission.name,
       points: mission.points,
       id: mission.id,
+      gameId,
     }
   }
 }
