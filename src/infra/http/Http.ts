@@ -3,8 +3,8 @@ export default interface Http {
     method: 'get' | 'post',
     url: string,
     callback: (
-      params: Record<string, string>,
-      body: Record<string, any>,
+      params: unknown,
+      body: unknown,
     ) => Promise<{ status: number; body: any }>,
   ): void
 

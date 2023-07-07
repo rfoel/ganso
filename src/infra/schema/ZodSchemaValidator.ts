@@ -5,16 +5,15 @@ import { categories } from 'domain/entity/mission'
 import SchemaError from 'infra/errors/SchemaError'
 
 export default class ZodSchemaValidator implements SchemaValidator {
-  private getMessage(error: ZodError) {
-    return `${error.issues[0].path.join('.')}: ${error.issues[0].message}`
-  }
-
   private validate(schema: ZodSchema, params: any, body: any) {
     try {
       schema.parse({ params, body })
     } catch (error) {
       if (error instanceof ZodError)
-        throw new SchemaError(this.getMessage(error))
+        throw new SchemaError(
+          error.errors[0].code,
+          error.errors[0].path.at(-1) as string,
+        )
       else throw error
     }
   }

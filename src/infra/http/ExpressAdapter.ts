@@ -4,7 +4,7 @@ import Http from './Http'
 import NotFoundError from 'infra/errors/NotFoundError'
 import SchemaError from 'infra/errors/SchemaError'
 
-export default class Express implements Http {
+export default class ExpressAdapter implements Http {
   private app: Application
 
   constructor() {
@@ -28,7 +28,9 @@ export default class Express implements Http {
         if (error instanceof NotFoundError) {
           response.status(error.status).json({ message: error.message })
         } else if (error instanceof SchemaError) {
-          response.status(error.status).json({ message: error.message })
+          response
+            .status(error.status)
+            .json({ code: error.code, field: error.field })
         } else if (error instanceof Error) {
           response.status(400).json({ message: error.message })
         } else {

@@ -92,7 +92,8 @@ describe('games', () => {
       const response = await request('/games', game, 'post')
 
       expect(response.status).toBe(422)
-      expect(response.body.message).toBe('body.description: Required')
+      expect(response.body.code).toStrictEqual(expect.any(String))
+      expect(response.body.field).toBe('description')
     })
   })
 
@@ -136,7 +137,8 @@ describe('games', () => {
       const response = await request('/games/1/missions', mission, 'post')
 
       expect(response.status).toBe(422)
-      expect(response.body.message).toBe('body.category: Required')
+      expect(response.body.code).toStrictEqual(expect.any(String))
+      expect(response.body.field).toBe('category')
     })
 
     it('responds with a 422 status code if a field has the wrong type', async () => {
@@ -151,9 +153,8 @@ describe('games', () => {
       const response = await request('/games/1/missions', mission, 'post')
 
       expect(response.status).toBe(422)
-      expect(response.body.message).toBe(
-        'body.points: Expected number, received boolean',
-      )
+      expect(response.body.code).toStrictEqual(expect.any(String))
+      expect(response.body.field).toBe('points')
     })
   })
 })
