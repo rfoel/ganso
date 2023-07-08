@@ -14,22 +14,22 @@ export default class GameController {
   ) {
     http.on('get', '/games/:gameId', async (params, body) => {
       schemaValidator.getGame(params, body)
-      const getGame = new GetGame(repository)
-      const game = await getGame.execute(Number(params.gameId))
+      const usecase = new GetGame(repository)
+      const game = await usecase.execute(Number(params.gameId))
       return { status: 200, body: game }
     })
 
     http.on('get', '/games', async (params, body) => {
       schemaValidator.getGames(params, body)
-      const getGames = new GetGames(repository)
-      const games = await getGames.execute()
+      const usecase = new GetGames(repository)
+      const games = await usecase.execute()
       return { status: 200, body: games }
     })
 
     http.on('post', '/games', async (params, body) => {
       schemaValidator.createGame(params, body)
-      const createGame = new CreateGame(repository)
-      const game = await createGame.execute(body.name, body.description)
+      const usecase = new CreateGame(repository)
+      const game = await usecase.execute(body.name, body.description)
       return { status: 201, body: game }
     })
   }
