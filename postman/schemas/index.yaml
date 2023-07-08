@@ -89,6 +89,39 @@ paths:
                         application/json:
                             schema:
                                 $ref: "#/components/schemas/Error"
+        put:
+            summary: Updates a single game
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/GameInput"
+            responses:
+                "200":
+                    description: The game updated corresponding to the provided `gameId`
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Game"
+                404:
+                    description: No game found for the provided `gameId`
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Error"
+                422:
+                    description: Bad request for the game update
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Error"
+                500:
+                    description: Unexpected error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Error"
     /games/{gameId}/missions:
         parameters:
             - name: gameId

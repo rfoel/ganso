@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "f71e7f45-eb35-404f-b4bc-21ea933e319a",
+		"_postman_id": "2118020e-4ce0-462b-b934-639b249e7f39",
 		"name": "ganso",
 		"description": "Goosechase Full-Stack Take-Home Challenge",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_uid": "2432355-f71e7f45-eb35-404f-b4bc-21ea933e319a"
+		"_uid": "2432355-2118020e-4ce0-462b-b934-639b249e7f39"
 	},
 	"item": [
 		{
@@ -21,7 +21,7 @@
 									"item": [
 										{
 											"name": "Show details for a single mission",
-											"id": "722b7cb1-35bf-46b1-86fe-59fad6930144",
+											"id": "43b025bd-6dde-442a-8286-4993536fc2c5",
 											"protocolProfileBehavior": {
 												"disableBodyPruning": true
 											},
@@ -46,12 +46,10 @@
 													],
 													"variable": [
 														{
-															"id": "e9b88727-4fa4-4335-96b6-50150bb3f5dd",
 															"key": "gameId",
 															"value": "<integer>"
 														},
 														{
-															"id": "0fcf11ae-380f-4fca-a9f2-5bd7ed0c1413",
 															"key": "missionId",
 															"value": "<integer>"
 														}
@@ -60,7 +58,7 @@
 											},
 											"response": [
 												{
-													"id": "033c2465-82c7-406f-96dc-1a437765be97",
+													"id": "9ac4b39a-500e-49e8-ba25-6e78ea9afffd",
 													"name": "The mission corresponding to the provided `missionId`",
 													"originalRequest": {
 														"method": "GET",
@@ -83,14 +81,10 @@
 															],
 															"variable": [
 																{
-																	"id": "e9b88727-4fa4-4335-96b6-50150bb3f5dd",
-																	"key": "gameId",
-																	"value": "<integer>"
+																	"key": "gameId"
 																},
 																{
-																	"id": "0fcf11ae-380f-4fca-a9f2-5bd7ed0c1413",
-																	"key": "missionId",
-																	"value": "<integer>"
+																	"key": "missionId"
 																}
 															]
 														}
@@ -105,10 +99,10 @@
 														}
 													],
 													"cookie": [],
-													"body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"points\": \"<integer>\",\n  \"category\": \"text\",\n  \"gameId\": \"<integer>\"\n}"
+													"body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"points\": \"<integer>\",\n  \"category\": \"gps\",\n  \"gameId\": \"<integer>\"\n}"
 												},
 												{
-													"id": "85b0c8ec-a0f5-4a4f-87fb-dc4f1ca766f9",
+													"id": "f2f2d481-f4c9-47bc-9416-045304e1a27c",
 													"name": "No mission found for the provided `missionId`",
 													"originalRequest": {
 														"method": "GET",
@@ -131,14 +125,10 @@
 															],
 															"variable": [
 																{
-																	"id": "e9b88727-4fa4-4335-96b6-50150bb3f5dd",
-																	"key": "gameId",
-																	"value": "<integer>"
+																	"key": "gameId"
 																},
 																{
-																	"id": "0fcf11ae-380f-4fca-a9f2-5bd7ed0c1413",
-																	"key": "missionId",
-																	"value": "<integer>"
+																	"key": "missionId"
 																}
 															]
 														}
@@ -156,7 +146,7 @@
 													"body": "{\n  \"message\": \"<string>\"\n}"
 												},
 												{
-													"id": "afc2ecb5-89a8-44a1-aede-25c65bd7a4f4",
+													"id": "96e9e0a2-e40f-4220-b471-1d8ace4315d8",
 													"name": "Bad request for the mission getter",
 													"originalRequest": {
 														"method": "GET",
@@ -179,14 +169,10 @@
 															],
 															"variable": [
 																{
-																	"id": "e9b88727-4fa4-4335-96b6-50150bb3f5dd",
-																	"key": "gameId",
-																	"value": "<integer>"
+																	"key": "gameId"
 																},
 																{
-																	"id": "0fcf11ae-380f-4fca-a9f2-5bd7ed0c1413",
-																	"key": "missionId",
-																	"value": "<integer>"
+																	"key": "missionId"
 																}
 															]
 														}
@@ -204,7 +190,7 @@
 													"body": "{\n  \"message\": \"<string>\"\n}"
 												},
 												{
-													"id": "71272bd3-4893-464f-9cf9-48141de7859c",
+													"id": "bb297cd6-137f-4237-a06f-0e2a269f5921",
 													"name": "Unexpected error",
 													"originalRequest": {
 														"method": "GET",
@@ -227,14 +213,10 @@
 															],
 															"variable": [
 																{
-																	"id": "e9b88727-4fa4-4335-96b6-50150bb3f5dd",
-																	"key": "gameId",
-																	"value": "<integer>"
+																	"key": "gameId"
 																},
 																{
-																	"id": "0fcf11ae-380f-4fca-a9f2-5bd7ed0c1413",
-																	"key": "missionId",
-																	"value": "<integer>"
+																	"key": "missionId"
 																}
 															]
 														}
@@ -254,11 +236,11 @@
 											]
 										}
 									],
-									"id": "aee67993-598e-4eaa-9d04-6b671b9b4370"
+									"id": "13414062-092b-4f4a-97d2-c6bf52a41805"
 								},
 								{
 									"name": "List missions for a game",
-									"id": "221b6548-84b6-4034-a491-bb3ff9c3b19d",
+									"id": "46c27772-dd9b-4019-b4a0-2defab1aa5ea",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -282,7 +264,6 @@
 											],
 											"variable": [
 												{
-													"id": "2e251325-66dc-4eb6-8b3f-aad63083368a",
 													"key": "gameId",
 													"value": "<integer>"
 												}
@@ -291,7 +272,7 @@
 									},
 									"response": [
 										{
-											"id": "1c36162d-24f1-4dfd-8b0d-667c2c9b4387",
+											"id": "7289f27f-d079-46f1-9f88-1ef9514c52b8",
 											"name": "List of missions for the provided `gameId`",
 											"originalRequest": {
 												"method": "GET",
@@ -313,9 +294,7 @@
 													],
 													"variable": [
 														{
-															"id": "2e251325-66dc-4eb6-8b3f-aad63083368a",
-															"key": "gameId",
-															"value": "<integer>"
+															"key": "gameId"
 														}
 													]
 												}
@@ -333,7 +312,7 @@
 											"body": "[\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"points\": \"<integer>\",\n    \"category\": \"photo+video\",\n    \"gameId\": \"<integer>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"points\": \"<integer>\",\n    \"category\": \"gps\",\n    \"gameId\": \"<integer>\"\n  }\n]"
 										},
 										{
-											"id": "2bba4a96-8d47-4deb-a405-cb052465d463",
+											"id": "0a132c5f-38e0-470b-bd38-2d49b2690336",
 											"name": "No game found for the provided `gameId`",
 											"originalRequest": {
 												"method": "GET",
@@ -355,9 +334,7 @@
 													],
 													"variable": [
 														{
-															"id": "2e251325-66dc-4eb6-8b3f-aad63083368a",
-															"key": "gameId",
-															"value": "<integer>"
+															"key": "gameId"
 														}
 													]
 												}
@@ -375,7 +352,7 @@
 											"body": "{\n  \"message\": \"<string>\"\n}"
 										},
 										{
-											"id": "81919085-60e4-4f2a-8eca-4f817895c8c2",
+											"id": "4c1ac51b-3d0e-4723-b511-b05942dbbb01",
 											"name": "Bad request for the mission list",
 											"originalRequest": {
 												"method": "GET",
@@ -397,9 +374,7 @@
 													],
 													"variable": [
 														{
-															"id": "2e251325-66dc-4eb6-8b3f-aad63083368a",
-															"key": "gameId",
-															"value": "<integer>"
+															"key": "gameId"
 														}
 													]
 												}
@@ -417,7 +392,7 @@
 											"body": "{\n  \"message\": \"<string>\"\n}"
 										},
 										{
-											"id": "798e9813-715f-4ed8-b788-3e01dd273e03",
+											"id": "ce2ae9d2-614f-4031-b7e7-4b39abd2d3af",
 											"name": "Unexpected error",
 											"originalRequest": {
 												"method": "GET",
@@ -439,9 +414,7 @@
 													],
 													"variable": [
 														{
-															"id": "2e251325-66dc-4eb6-8b3f-aad63083368a",
-															"key": "gameId",
-															"value": "<integer>"
+															"key": "gameId"
 														}
 													]
 												}
@@ -462,7 +435,7 @@
 								},
 								{
 									"name": "Add a mission to a game",
-									"id": "e4b6392c-59f4-4b67-a004-9efdaf5deb3c",
+									"id": "b924db0a-fe1e-4eba-ae03-795f59a0776c",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -480,7 +453,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"points\": \"<integer>\",\n  \"category\": \"gps\"\n}",
+											"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"points\": \"<integer>\",\n  \"category\": \"text\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -500,7 +473,6 @@
 											],
 											"variable": [
 												{
-													"id": "ace4eb87-f6d7-47c6-bee6-3eb38a6250b1",
 													"key": "gameId",
 													"value": "<integer>"
 												}
@@ -509,7 +481,7 @@
 									},
 									"response": [
 										{
-											"id": "99202563-4e6f-4f0d-83db-f93afa599efb",
+											"id": "c211113d-bb94-4dd7-8692-9239d3171522",
 											"name": "The mission created",
 											"originalRequest": {
 												"method": "POST",
@@ -525,7 +497,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"points\": \"<integer>\",\n  \"category\": \"gps\"\n}",
+													"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"points\": \"<integer>\",\n  \"category\": \"text\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -545,9 +517,7 @@
 													],
 													"variable": [
 														{
-															"id": "ace4eb87-f6d7-47c6-bee6-3eb38a6250b1",
-															"key": "gameId",
-															"value": "<integer>"
+															"key": "gameId"
 														}
 													]
 												}
@@ -562,10 +532,10 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"points\": \"<integer>\",\n  \"category\": \"text\",\n  \"gameId\": \"<integer>\"\n}"
+											"body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"points\": \"<integer>\",\n  \"category\": \"gps\",\n  \"gameId\": \"<integer>\"\n}"
 										},
 										{
-											"id": "7d6d5d06-edd4-4f66-b4ff-b8c194f93d51",
+											"id": "3311c03e-e710-48b0-83a5-3378ba530340",
 											"name": "No game found for the provided `gameId`",
 											"originalRequest": {
 												"method": "POST",
@@ -581,7 +551,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"points\": \"<integer>\",\n  \"category\": \"gps\"\n}",
+													"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"points\": \"<integer>\",\n  \"category\": \"text\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -601,9 +571,7 @@
 													],
 													"variable": [
 														{
-															"id": "ace4eb87-f6d7-47c6-bee6-3eb38a6250b1",
-															"key": "gameId",
-															"value": "<integer>"
+															"key": "gameId"
 														}
 													]
 												}
@@ -621,7 +589,7 @@
 											"body": "{\n  \"message\": \"<string>\"\n}"
 										},
 										{
-											"id": "60d03625-b89b-4203-82c3-87e79b54abf5",
+											"id": "5009b3aa-8bfe-4061-91c7-056b3fda39e1",
 											"name": "Bad request for the mission creation",
 											"originalRequest": {
 												"method": "POST",
@@ -637,7 +605,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"points\": \"<integer>\",\n  \"category\": \"gps\"\n}",
+													"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"points\": \"<integer>\",\n  \"category\": \"text\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -657,9 +625,7 @@
 													],
 													"variable": [
 														{
-															"id": "ace4eb87-f6d7-47c6-bee6-3eb38a6250b1",
-															"key": "gameId",
-															"value": "<integer>"
+															"key": "gameId"
 														}
 													]
 												}
@@ -677,7 +643,7 @@
 											"body": "{\n  \"message\": \"<string>\"\n}"
 										},
 										{
-											"id": "39f0b834-c022-4ded-be6a-6083d15e6248",
+											"id": "14b79806-2112-4cc3-b3f5-db6c2173d490",
 											"name": "Unexpected error",
 											"originalRequest": {
 												"method": "POST",
@@ -693,7 +659,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"points\": \"<integer>\",\n  \"category\": \"gps\"\n}",
+													"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"points\": \"<integer>\",\n  \"category\": \"text\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -713,9 +679,7 @@
 													],
 													"variable": [
 														{
-															"id": "ace4eb87-f6d7-47c6-bee6-3eb38a6250b1",
-															"key": "gameId",
-															"value": "<integer>"
+															"key": "gameId"
 														}
 													]
 												}
@@ -735,11 +699,11 @@
 									]
 								}
 							],
-							"id": "57134cc5-fe67-476f-9d20-5297a18b7abd"
+							"id": "424c2a3c-f16a-46ba-8606-fcb7c0a77d31"
 						},
 						{
 							"name": "Show details for a single game",
-							"id": "fcbc3ea5-fa3d-4044-abfa-1a04e70add56",
+							"id": "7e04d51e-15c1-444b-b093-51ef389d2586",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -762,7 +726,6 @@
 									],
 									"variable": [
 										{
-											"id": "6b3d212b-d583-4a5f-84e1-3bc8631248bf",
 											"key": "gameId",
 											"value": "<integer>"
 										}
@@ -771,7 +734,7 @@
 							},
 							"response": [
 								{
-									"id": "ad12f365-f6fe-4a5f-b54f-c04576a0ca55",
+									"id": "904c10ab-edc4-4015-b3e4-8f78f610e9e7",
 									"name": "The game corresponding to the provided `gameId`",
 									"originalRequest": {
 										"method": "GET",
@@ -792,9 +755,7 @@
 											],
 											"variable": [
 												{
-													"id": "6b3d212b-d583-4a5f-84e1-3bc8631248bf",
-													"key": "gameId",
-													"value": "<integer>"
+													"key": "gameId"
 												}
 											]
 										}
@@ -812,7 +773,7 @@
 									"body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}"
 								},
 								{
-									"id": "aa25bafb-5d7e-4157-94ab-c321ffb1f876",
+									"id": "332b1022-0a47-4f34-9ff2-47d93ae8beb6",
 									"name": "No game found for the provided `gameId`",
 									"originalRequest": {
 										"method": "GET",
@@ -833,9 +794,7 @@
 											],
 											"variable": [
 												{
-													"id": "6b3d212b-d583-4a5f-84e1-3bc8631248bf",
-													"key": "gameId",
-													"value": "<integer>"
+													"key": "gameId"
 												}
 											]
 										}
@@ -853,7 +812,7 @@
 									"body": "{\n  \"message\": \"<string>\"\n}"
 								},
 								{
-									"id": "b88d150d-59d8-46d5-b5d4-95bcbc3caf33",
+									"id": "f8610402-15fc-4b77-b8ee-306f75d94c0c",
 									"name": "Bad request for the game getter",
 									"originalRequest": {
 										"method": "GET",
@@ -874,9 +833,7 @@
 											],
 											"variable": [
 												{
-													"id": "6b3d212b-d583-4a5f-84e1-3bc8631248bf",
-													"key": "gameId",
-													"value": "<integer>"
+													"key": "gameId"
 												}
 											]
 										}
@@ -894,7 +851,7 @@
 									"body": "{\n  \"message\": \"<string>\"\n}"
 								},
 								{
-									"id": "e638c4b9-4cf7-4f8e-8027-3d2c2bfb15da",
+									"id": "73dcf677-9558-4f37-bbbf-65def2c5abe9",
 									"name": "Unexpected error",
 									"originalRequest": {
 										"method": "GET",
@@ -915,9 +872,267 @@
 											],
 											"variable": [
 												{
-													"id": "6b3d212b-d583-4a5f-84e1-3bc8631248bf",
-													"key": "gameId",
-													"value": "<integer>"
+													"key": "gameId"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"message\": \"<string>\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Updates a single game",
+							"id": "3185b967-f6dc-43e2-93cf-e209e3109eb0",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/games/:gameId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"games",
+										":gameId"
+									],
+									"variable": [
+										{
+											"key": "gameId",
+											"value": "<integer>"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "1d7be391-0f89-4054-a1f3-8b8d79612aa8",
+									"name": "The game updated corresponding to the provided `gameId`",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/games/:gameId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"games",
+												":gameId"
+											],
+											"variable": [
+												{
+													"key": "gameId"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}"
+								},
+								{
+									"id": "a4b280b3-3428-45bf-a69a-ef67c6d97b43",
+									"name": "No game found for the provided `gameId`",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/games/:gameId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"games",
+												":gameId"
+											],
+											"variable": [
+												{
+													"key": "gameId"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"message\": \"<string>\"\n}"
+								},
+								{
+									"id": "ef62d11f-eebc-4e03-a19c-0bf7c02311ad",
+									"name": "Bad request for the game update",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/games/:gameId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"games",
+												":gameId"
+											],
+											"variable": [
+												{
+													"key": "gameId"
+												}
+											]
+										}
+									},
+									"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"message\": \"<string>\"\n}"
+								},
+								{
+									"id": "3757a7ec-98d6-44b5-a069-7dc7c24d8974",
+									"name": "Unexpected error",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/games/:gameId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"games",
+												":gameId"
+											],
+											"variable": [
+												{
+													"key": "gameId"
 												}
 											]
 										}
@@ -937,11 +1152,11 @@
 							]
 						}
 					],
-					"id": "dd709864-e9fb-45ba-b952-c2021ec56509"
+					"id": "3d361c5b-1809-4485-a7f9-e9b5c46dc7a4"
 				},
 				{
 					"name": "Create a game",
-					"id": "9706bf08-e964-48a9-981b-0a5dfce56c5b",
+					"id": "ec3c2d0d-7c2c-4e78-b3fc-52eb04b46307",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -979,7 +1194,7 @@
 					},
 					"response": [
 						{
-							"id": "1248cf47-f3d9-4ffd-a8d8-13154f0439e1",
+							"id": "ac73537d-0c41-4360-9886-61398051e6cf",
 							"name": "The game created",
 							"originalRequest": {
 								"method": "POST",
@@ -1026,7 +1241,7 @@
 							"body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}"
 						},
 						{
-							"id": "3d1c83fe-1037-4a36-9006-c1fbba87c8c9",
+							"id": "cbe105bf-c3d2-4e00-a3ff-77d62a5956cb",
 							"name": "Bad request for the game creation",
 							"originalRequest": {
 								"method": "POST",
@@ -1073,7 +1288,7 @@
 							"body": "{\n  \"message\": \"<string>\"\n}"
 						},
 						{
-							"id": "112d382a-18e2-4cb2-96f4-23fd62da0479",
+							"id": "5ec19397-2839-4cbe-bfd9-dbb9bfc61b5d",
 							"name": "Unexpected error",
 							"originalRequest": {
 								"method": "POST",
@@ -1123,7 +1338,7 @@
 				},
 				{
 					"name": "List games",
-					"id": "f044acca-5ae5-4a66-a19e-cec4c6116054",
+					"id": "d744f2ff-4e2e-4f0f-b8e8-d458a9cc24d2",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1147,7 +1362,7 @@
 					},
 					"response": [
 						{
-							"id": "e4297b73-7a88-4e79-9c48-348160d4b2a8",
+							"id": "b360a320-1c3b-4470-9cda-44a6faf1a9b3",
 							"name": "List of all games",
 							"originalRequest": {
 								"method": "GET",
@@ -1180,7 +1395,7 @@
 							"body": "[\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\"\n  }\n]"
 						},
 						{
-							"id": "ffe300fc-0330-4c66-ae0e-e76e5ef766e7",
+							"id": "55bdadc9-bacc-4b73-b806-be3e4fc1fb17",
 							"name": "Bad request for the game listing",
 							"originalRequest": {
 								"method": "GET",
@@ -1213,7 +1428,7 @@
 							"body": "{\n  \"message\": \"<string>\"\n}"
 						},
 						{
-							"id": "7313c44b-3217-47fe-a73d-b0e7f8430736",
+							"id": "2184f292-8871-4ea5-b875-6886d7ea0b18",
 							"name": "Unexpected error",
 							"originalRequest": {
 								"method": "GET",
@@ -1248,12 +1463,12 @@
 					]
 				}
 			],
-			"id": "e74b3c23-7098-47c8-9541-5d284e000bbc"
+			"id": "d84db324-b7b9-405c-9e02-73916977a6e6"
 		}
 	],
 	"variable": [
 		{
-			"id": "509b314f-7d11-4a88-9abf-e3c8386b3d6a",
+			"id": "5837193c-a2b1-42e2-8620-ffaa035efee6",
 			"key": "baseUrl",
 			"value": "/"
 		}

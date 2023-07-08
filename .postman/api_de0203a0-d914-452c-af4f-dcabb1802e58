@@ -9,7 +9,7 @@ id = de0203a0-d914-452c-af4f-dcabb1802e58
 
 [config.relations.collections]
 rootDirectory = postman/collections
-files[] = {"id":"2432355-f71e7f45-eb35-404f-b4bc-21ea933e319a","path":"ganso.json","metaData":{"generateCollectionPreferences":"{\"updateCollectionSync\":true,\"folderStrategy\":\"Paths\",\"includeDeprecated\":true,\"includeAuthInfoInExample\":true,\"enableOptionalParameters\":true,\"keepImplicitHeaders\":false,\"requestNameSource\":\"Fallback\",\"indentCharacter\":\"Space\",\"requestParametersResolution\":\"Example\",\"exampleParametersResolution\":\"Example\",\"collapseFolders\":true,\"optimizeConversion\":true}"}}
+files[] = {"id":"2432355-2118020e-4ce0-462b-b934-639b249e7f39","path":"ganso.json","metaData":{"generateCollectionPreferences":"{\"requestNameSource\":\"Fallback\",\"indentCharacter\":\"Space\",\"parametersResolution\":\"Schema\",\"folderStrategy\":\"Paths\",\"includeAuthInfoInExample\":false,\"enableOptionalParameters\":true,\"keepImplicitHeaders\":false,\"includeDeprecated\":true,\"alwaysInheritAuthentication\":false,\"updateCollectionSync\":true,\"requestParametersResolution\":\"Schema\",\"exampleParametersResolution\":\"Schema\"}"}}
 
 [config.relations.collections.metaData]
 
