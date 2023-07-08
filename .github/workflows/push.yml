@@ -16,7 +16,7 @@ jobs:
       - name: ⎔ Setup node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
 
       - name: 📥 Download deps
         uses: bahmutov/npm-install@v1
@@ -37,7 +37,7 @@ jobs:
       - name: ⎔ Setup node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
 
       - name: 📥 Download deps
         uses: bahmutov/npm-install@v1
@@ -53,11 +53,17 @@ jobs:
       POSTGRES_DB: 'db'
       POSTGRES_USER: 'postgres'
       POSTGRES_PASSWORD: 'ganso'
+      POSTGRES_DB_URL: 'postgresql://postgres:ganso@localhost:5432/db'
+      PORT: 3000
     services:
       postgres:
         image: postgres
         ports:
           - 5432:5432
+        env:
+          POSTGRES_DB: 'db'
+          POSTGRES_USER: 'postgres'
+          POSTGRES_PASSWORD: 'ganso'
 
     steps:
       - name: 🛑 Cancel Previous Runs
@@ -69,19 +75,24 @@ jobs:
       - name: ⎔ Setup node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
 
       - name: 📥 Download deps
         uses: bahmutov/npm-install@v1
 
       - name: ⚡ Test
-        run: npm run test
+        run: npm run test:ci
 
   test-dynamo:
     needs: [lint, typecheck]
     runs-on: ubuntu-latest
     env:
+      AWS_REGION: 'us-east-1'
+      AWS_ACCESS_KEY_ID: abc123
+      AWS_SECRET_ACCESS_KEY: abc123
       DB_STRATEGY: 'dynamo'
+      DYNAMO_DB_URL: 'http://localhost:8000'
+      PORT: 3000
     services:
       amazon/dynamodb-local:
         image: amazon/dynamodb-local
@@ -98,10 +109,10 @@ jobs:
       - name: ⎔ Setup node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
 
       - name: 📥 Download deps
         uses: bahmutov/npm-install@v1
 
       - name: ⚡ Test
-        run: npm run test
+        run: npm run test:ci

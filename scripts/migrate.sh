@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 if [[ $DB_STRATEGY == 'postgres' ]]; then
     npx prisma migrate reset -f

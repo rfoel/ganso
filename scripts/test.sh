@@ -1,8 +1,8 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
 
-source $DIR/set-env.sh
+. $DIR/set-env.sh
 
 if [[ $DB_STRATEGY == 'postgres' ]]; then
     DB_URL=$POSTGRES_DB_URL
