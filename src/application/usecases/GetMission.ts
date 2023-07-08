@@ -1,5 +1,5 @@
-import Mission from 'domain/entity/mission'
-import MissionRepository from 'domain/repository/mission'
+import Mission from 'domain/entity/Mission'
+import MissionRepository from 'domain/repository/Mission'
 
 export default class GetMission {
   constructor(readonly missionRepository: MissionRepository) {}

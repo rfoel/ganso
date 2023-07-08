@@ -1,14 +1,14 @@
 import Dinamo from 'dinamo'
 
-import Mission from 'domain/entity/mission'
-import MissionRepository from 'domain/repository/mission'
+import Mission from 'domain/entity/Mission'
+import MissionRepository from 'domain/repository/Mission'
 import NotFoundError from 'infra/errors/NotFoundError'
 
-const dinamo = new Dinamo({ tableName: 'ganso', endpoint: process.env.DB_URL })
-
 export default class MissionRepositoryDynamoDB implements MissionRepository {
+  constructor(readonly dinamo: Dinamo) {}
+
   async get(gameId: number, missionId: number): Promise<Mission> {
-    const result = await dinamo.query<Mission>({
+    const result = await this.dinamo.query<Mission>({
       key: { type: 'mission', id: missionId },
       query: { gameId },
     })
@@ -24,7 +24,7 @@ export default class MissionRepositoryDynamoDB implements MissionRepository {
   }
 
   async list(gameId: number): Promise<Mission[]> {
-    const result = await dinamo.query<Mission>({
+    const result = await this.dinamo.query<Mission>({
       key: { gameId },
       indexName: 'missionIndex',
     })
@@ -42,13 +42,15 @@ export default class MissionRepositoryDynamoDB implements MissionRepository {
   }
 
   async create(mission: Mission): Promise<Mission> {
-    const game = await dinamo.get({ key: { type: 'game', id: mission.gameId } })
+    const game = await this.dinamo.get({
+      key: { type: 'game', id: mission.gameId },
+    })
     if (!game) throw new NotFoundError('No Game found')
-    const missionCounter = await dinamo.increment<{ count: number }>({
+    const missionCounter = await this.dinamo.increment<{ count: number }>({
       key: { type: 'missionCounter', id: 0 },
       field: 'count',
     })
-    await dinamo.put({
+    await this.dinamo.put({
       item: {
         description: mission.description,
         name: mission.name,

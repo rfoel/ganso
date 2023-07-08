@@ -8,7 +8,7 @@ import seed from '../seed'
 
 const dinamo = new Dinamo({
   tableName: 'ganso',
-  endpoint: 'http://localhost:8000',
+  endpoint: process.env.DYNAMO_DB_URL,
 })
 
 try {

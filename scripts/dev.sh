@@ -4,7 +4,15 @@ DIR="$(cd "$(dirname "$0")" && pwd)"
 
 source $DIR/set-env.sh
 
-docker-compose up -d
+if [[ $DB_STRATEGY == "postgres" ]]; then
+    DB_URL=$POSTGRES_DB_URL
+    DOCKER_COMPOSE_FILE="docker-compose.postgres.yml"
+elif [[ $DB_STRATEGY == "dynamo" ]]; then
+    DB_URL=$DYNAMO_DB_URL
+    DOCKER_COMPOSE_FILE="docker-compose.dynamo.yml"
+fi
+
+docker-compose -f $DOCKER_COMPOSE_FILE up -d
 
 echo 'Waiting for database to be ready...'
 

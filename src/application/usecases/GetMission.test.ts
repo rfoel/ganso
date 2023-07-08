@@ -1,14 +1,15 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 
-import Mission from 'domain/entity/mission'
-import missionRepository from 'infra/repository/mission'
+import Mission from 'domain/entity/Mission'
 import GetMission from 'application/usecases/GetMission'
+import Repository from 'infra/factory/Repository'
 
 describe('Use case - GetMission', () => {
   let usecase: GetMission
 
   beforeAll(() => {
-    usecase = new GetMission(missionRepository)
+    const repository = new Repository(process.env.DB_STRATEGY)
+    usecase = new GetMission(repository.mission)
   })
 
   it('gets a mission', async () => {

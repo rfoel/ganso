@@ -1,4 +1,4 @@
-import Mission from 'domain/entity/mission'
+import Mission from 'domain/entity/Mission'
 
 export default interface MissionRepository {
   get(gameId: number, missionId: number): Promise<Mission>

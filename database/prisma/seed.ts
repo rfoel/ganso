@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 
 import seed from '../seed'
-import { getPrismaCategory } from 'infra/repository/prisma/category'
+import { getPrismaCategory } from 'infra/repository/prisma/Category'
 
 const prisma = new PrismaClient()
 
@@ -20,7 +20,7 @@ for (const data of seed) {
       },
     },
   })
-  console.log(`Created game with id: ${game.id as number}`)
+  console.log(`Created game with id: ${game.id}`)
 }
 
 console.log(`Seeding finished.`)

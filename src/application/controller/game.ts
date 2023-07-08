@@ -1,4 +1,4 @@
-import GameRepository from 'domain/repository/game'
+import GameRepository from 'domain/repository/Game'
 
 import CreateGame from 'application/usecases/CreateGame'
 import GetGame from 'application/usecases/GetGame'

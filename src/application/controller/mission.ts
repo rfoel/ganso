@@ -1,5 +1,5 @@
-import GameRepository from 'domain/repository/game'
-import MissionRepository from 'domain/repository/mission'
+import GameRepository from 'domain/repository/Game'
+import MissionRepository from 'domain/repository/Mission'
 
 import CreateMission from 'application/usecases/CreateMission'
 import GetMission from 'application/usecases/GetMission'

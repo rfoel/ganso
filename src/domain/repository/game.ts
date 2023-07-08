@@ -1,4 +1,4 @@
-import Game from 'domain/entity/game'
+import Game from 'domain/entity/Game'
 
 export default interface GameRepository {
   get(id: number): Promise<Game>

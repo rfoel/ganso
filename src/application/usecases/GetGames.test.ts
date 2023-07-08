@@ -1,14 +1,15 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 
-import Game from 'domain/entity/game'
-import gameRepository from 'infra/repository/game'
+import Game from 'domain/entity/Game'
 import GetGames from 'application/usecases/GetGames'
+import Repository from 'infra/factory/Repository'
 
 describe('Use case - GetGames', () => {
   let usecase: GetGames
 
   beforeAll(() => {
-    usecase = new GetGames(gameRepository)
+    const repository = new Repository(process.env.DB_STRATEGY)
+    usecase = new GetGames(repository.game)
   })
 
   it('gets a list of game', async () => {

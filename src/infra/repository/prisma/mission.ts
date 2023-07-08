@@ -1,16 +1,16 @@
 import { Prisma, PrismaClient } from '@prisma/client'
 
-import Mission, { Category } from 'domain/entity/mission'
-import MissionRepository from 'domain/repository/mission'
+import Mission, { Category } from 'domain/entity/Mission'
+import MissionRepository from 'domain/repository/Mission'
 import NotFoundError from 'infra/errors/NotFoundError'
-import { getCategory, getPrismaCategory } from './category'
-
-const prisma = new PrismaClient()
+import { getCategory, getPrismaCategory } from './Category'
 
 export default class MissionRepositoryPrisma implements MissionRepository {
+  constructor(readonly prisma: PrismaClient) {}
+
   async get(gameId: number, missionId: number): Promise<Mission> {
     try {
-      const result = await prisma.mission.findUniqueOrThrow({
+      const result = await this.prisma.mission.findUniqueOrThrow({
         where: { id_gameId: { gameId, id: missionId } },
       })
 
@@ -31,7 +31,7 @@ export default class MissionRepositoryPrisma implements MissionRepository {
 
   async list(gameId: number): Promise<Mission[]> {
     try {
-      const result = await prisma.game.findUniqueOrThrow({
+      const result = await this.prisma.game.findUniqueOrThrow({
         where: { id: gameId },
         include: { missions: { orderBy: { id: 'asc' } } },
       })
@@ -56,10 +56,10 @@ export default class MissionRepositoryPrisma implements MissionRepository {
 
   async create(mission: Mission): Promise<Mission> {
     try {
-      await prisma.game.findUniqueOrThrow({
+      await this.prisma.game.findUniqueOrThrow({
         where: { id: mission.gameId },
       })
-      const result = await prisma.mission.create({
+      const result = await this.prisma.mission.create({
         data: {
           category: getPrismaCategory(mission.category),
           description: mission.description,

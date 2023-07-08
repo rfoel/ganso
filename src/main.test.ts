@@ -18,7 +18,7 @@ describe('games', () => {
 
       expect(response.status).toBe(200)
       expect(response.body.length).toStrictEqual(expect.any(Number))
-      expect(response.body).toStrictEqual([
+      expect(response.body).toMatchObject([
         expect.objectContaining({ id: 1, name: '5th Grade Math Fun!' }),
         expect.objectContaining({ id: 2, name: 'Toronto landmark hunt' }),
       ])
@@ -75,7 +75,7 @@ describe('missions', () => {
 
       expect(response.status).toBe(200)
       expect(response.body.length).toStrictEqual(expect.any(Number))
-      expect(response.body).toStrictEqual([
+      expect(response.body).toMatchObject([
         expect.objectContaining({
           id: 1,
           name: 'Barrels on Board',

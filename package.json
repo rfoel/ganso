@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "sh scripts/dev.sh",
+    "down": "sh scripts/down.sh",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
     "migrate": "sh scripts/migrate.sh",
     "test": "sh scripts/test.sh"

@@ -1,7 +1,7 @@
 import joi from 'joi'
 
 import SchemaValidator from './SchemaValidator'
-import { categories } from 'domain/entity/mission'
+import { categories } from 'domain/entity/Mission'
 import SchemaError from 'infra/errors/SchemaError'
 
 export default class ZodSchemaValidator implements SchemaValidator {

@@ -1,6 +1,6 @@
-import Mission, { Category } from 'domain/entity/mission'
-import GameRepository from 'domain/repository/game'
-import MissionRepository from 'domain/repository/mission'
+import Mission, { Category } from 'domain/entity/Mission'
+import GameRepository from 'domain/repository/Game'
+import MissionRepository from 'domain/repository/Mission'
 
 export default class CreateMission {
   constructor(

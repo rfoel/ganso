@@ -1,20 +1,20 @@
 import Dinamo from 'dinamo'
 
-import Game from 'domain/entity/game'
-import GameRepository from 'domain/repository/game'
+import Game from 'domain/entity/Game'
+import GameRepository from 'domain/repository/Game'
 import NotFoundError from 'infra/errors/NotFoundError'
 
-const dinamo = new Dinamo({ tableName: 'ganso', endpoint: process.env.DB_URL })
-
 export default class GameRepositoryDynamoDB implements GameRepository {
+  constructor(readonly dinamo: Dinamo) {}
+
   async get(id: number): Promise<Game> {
-    const result = await dinamo.get<Game>({ key: { type: 'game', id } })
+    const result = await this.dinamo.get<Game>({ key: { type: 'game', id } })
     if (!result) throw new NotFoundError('No Game found')
     return new Game(result.name, result.description, id)
   }
 
   async list(): Promise<Game[]> {
-    const result = await dinamo.query<Game>({
+    const result = await this.dinamo.query<Game>({
       key: { type: 'game' },
       scanIndexForward: true,
     })
@@ -24,11 +24,11 @@ export default class GameRepositoryDynamoDB implements GameRepository {
   }
 
   async create(game: Game): Promise<Game> {
-    const gameCounter = await dinamo.increment<{ count: number }>({
+    const gameCounter = await this.dinamo.increment<{ count: number }>({
       key: { type: 'gameCounter', id: 0 },
       field: 'count',
     })
-    await dinamo.put({
+    await this.dinamo.put({
       item: {
         description: game.description,
         name: game.name,

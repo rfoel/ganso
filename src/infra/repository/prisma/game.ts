@@ -1,15 +1,15 @@
 import { Prisma, PrismaClient } from '@prisma/client'
 
-import Game from 'domain/entity/game'
-import GameRepository from 'domain/repository/game'
+import Game from 'domain/entity/Game'
+import GameRepository from 'domain/repository/Game'
 import NotFoundError from 'infra/errors/NotFoundError'
 
-const prisma = new PrismaClient()
-
 export default class GameRepositoryPrisma implements GameRepository {
+  constructor(readonly prisma: PrismaClient) {}
+
   async get(id: number): Promise<Game> {
     try {
-      const result = await prisma.game.findFirstOrThrow({ where: { id } })
+      const result = await this.prisma.game.findFirstOrThrow({ where: { id } })
 
       return new Game(result.name, result.description, result.id)
     } catch (error) {
@@ -20,12 +20,12 @@ export default class GameRepositoryPrisma implements GameRepository {
   }
 
   async list(): Promise<Game[]> {
-    const result = await prisma.game.findMany({ orderBy: { id: 'asc' } })
+    const result = await this.prisma.game.findMany({ orderBy: { id: 'asc' } })
     return result.map((item) => new Game(item.name, item.description, item.id))
   }
 
   async create(game: Game): Promise<Game> {
-    const result = await prisma.game.create({
+    const result = await this.prisma.game.create({
       data: { description: game.description, name: game.name },
     })
     return new Game(result.name, result.description, result.id)

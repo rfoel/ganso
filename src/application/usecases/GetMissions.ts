@@ -1,6 +1,5 @@
-import Game from 'domain/entity/game'
-import Mission from 'domain/entity/mission'
-import MissionRepository from 'domain/repository/mission'
+import Mission from 'domain/entity/Mission'
+import MissionRepository from 'domain/repository/Mission'
 
 export default class GetMissions {
   constructor(readonly missionRepository: MissionRepository) {}
