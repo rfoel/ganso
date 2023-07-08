@@ -12,4 +12,6 @@ export default interface SchemaValidator {
   getMissions(params: any, body: any): void | SchemaError
 
   createMission(params: any, body: any): void | SchemaError
+
+  updateGame(params: any, body: any): void | SchemaError
 }

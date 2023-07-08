@@ -18,7 +18,7 @@ export default class KoaAdapter implements Http {
   }
 
   on(
-    method: 'get' | 'post',
+    method: 'get' | 'post' | 'put',
     url: string,
     callback: (
       params: unknown,

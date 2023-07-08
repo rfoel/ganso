@@ -66,6 +66,41 @@ describe('games', () => {
       expect(response.body.field).toBe('description')
     })
   })
+
+  describe('PUT /games/:gameId', () => {
+    it('responds with a 200 status code and the game updated', async () => {
+      const create = {
+        name: 'Multi-layered motivating core',
+        description:
+          'Try to compress the USB bandwidth, maybe it will transmit the cross-platform firewall!',
+      }
+
+      const { body } = await request('/games', create, 'post')
+
+      const game = {
+        name: 'Secured neutral challenge',
+        description:
+          'The PCI transmitter is down, program the cross-platform monitor so we can bypass the SMTP system!',
+      }
+      const response = await request(`/games/${body.id}`, game, 'put')
+
+      expect(response.status).toBe(200)
+      expect(response.body).toMatchObject({ ...game, id: body.id })
+    })
+
+    it('responds with a 422 status code if a field is missing', async () => {
+      const game = {
+        description:
+          'The PCI transmitter is down, program the cross-platform monitor so we can bypass the SMTP system!',
+      }
+
+      const response = await request('/games/1', game, 'put')
+
+      expect(response.status).toBe(422)
+      expect(response.body.code).toStrictEqual(expect.any(String))
+      expect(response.body.field).toBe('name')
+    })
+  })
 })
 
 describe('missions', () => {

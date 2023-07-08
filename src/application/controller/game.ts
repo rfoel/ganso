@@ -3,6 +3,7 @@ import GameRepository from 'domain/repository/Game'
 import CreateGame from 'application/usecases/CreateGame'
 import GetGame from 'application/usecases/GetGame'
 import GetGames from 'application/usecases/GetGames'
+import UpdateGame from 'application/usecases/UpdateGame'
 import Http from 'infra/http/Http'
 import SchemaValidator from 'infra/schema/SchemaValidator'
 
@@ -31,6 +32,17 @@ export default class GameController {
       const usecase = new CreateGame(repository)
       const game = await usecase.execute(body.name, body.description)
       return { status: 201, body: game }
+    })
+
+    http.on('put', '/games/:gameId', async (params, body) => {
+      schemaValidator.updateGame(params, body)
+      const usecase = new UpdateGame(repository)
+      const game = await usecase.execute(
+        Number(params.gameId),
+        body.name,
+        body.description,
+      )
+      return { status: 200, body: game }
     })
   }
 }

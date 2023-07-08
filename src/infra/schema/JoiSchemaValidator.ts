@@ -59,8 +59,8 @@ export default class ZodSchemaValidator implements SchemaValidator {
       body: joi.object({}),
       params: joi
         .object({
-          gameId: joi.string().required(),
-          missionId: joi.string().required(),
+          gameId: joi.number().required(),
+          missionId: joi.number().required(),
         })
         .required(),
     })
@@ -94,7 +94,24 @@ export default class ZodSchemaValidator implements SchemaValidator {
         .required(),
       params: joi
         .object({
-          gameId: joi.string().required(),
+          gameId: joi.number().required(),
+        })
+        .required(),
+    })
+    this.validate(schema, params, body)
+  }
+
+  updateGame(params: any, body: any): void | SchemaError {
+    const schema = joi.object({
+      body: joi
+        .object({
+          name: joi.string().min(3).max(60).required(),
+          description: joi.string().max(200).required(),
+        })
+        .required(),
+      params: joi
+        .object({
+          gameId: joi.number().required(),
         })
         .required(),
     })

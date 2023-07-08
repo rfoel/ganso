@@ -23,7 +23,7 @@ export default class GameRepositoryDynamoDB implements GameRepository {
     )
   }
 
-  async create(game: Game): Promise<Game> {
+  async create(game: Game): Promise<Required<Game>> {
     const gameCounter = await this.dinamo.increment<{ count: number }>({
       key: { type: 'gameCounter', id: 0 },
       field: 'count',
@@ -36,6 +36,28 @@ export default class GameRepositoryDynamoDB implements GameRepository {
         id: gameCounter.count,
       },
     })
-    return new Game(game.name, game.description, gameCounter.count)
+    return new Game(
+      game.name,
+      game.description,
+      gameCounter.count,
+    ) as Required<Game>
+  }
+
+  async update(game: Required<Game>): Promise<Required<Game>> {
+    const existingGame = await this.dinamo.get({
+      key: { type: 'game', id: game.id },
+    })
+    if (!existingGame) throw new NotFoundError('No Game found')
+    const result = await this.dinamo.update<Game>({
+      key: {
+        type: 'game',
+        id: game.id,
+      },
+      item: {
+        description: game.description,
+        name: game.name,
+      },
+    })
+    return new Game(result.name, result.description, game.id) as Required<Game>
   }
 }

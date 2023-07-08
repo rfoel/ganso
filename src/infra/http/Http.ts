@@ -1,6 +1,6 @@
 export default interface Http {
   on(
-    method: 'get' | 'post',
+    method: 'get' | 'post' | 'put',
     url: string,
     callback: (
       params: any,

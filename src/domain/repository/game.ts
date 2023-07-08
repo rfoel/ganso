@@ -5,5 +5,7 @@ export default interface GameRepository {
 
   list(): Promise<Game[]>
 
-  create(game: Game): Promise<Game>
+  create(game: Game): Promise<Required<Game>>
+
+  update(game: Required<Game>): Promise<Game>
 }

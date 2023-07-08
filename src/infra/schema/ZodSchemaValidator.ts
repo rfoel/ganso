@@ -57,8 +57,8 @@ export default class ZodSchemaValidator implements SchemaValidator {
     const schema = z.object({
       body: z.object({}).optional(),
       params: z.object({
-        gameId: z.string(),
-        missionId: z.string(),
+        gameId: z.coerce.number(),
+        missionId: z.coerce.number(),
       }),
     })
     this.validate(schema, params, body)
@@ -69,7 +69,7 @@ export default class ZodSchemaValidator implements SchemaValidator {
       .object({
         body: z.object({}).optional(),
         params: z.object({
-          gameId: z.string(),
+          gameId: z.coerce.number(),
         }),
       })
       .strict()
@@ -86,7 +86,22 @@ export default class ZodSchemaValidator implements SchemaValidator {
           category: z.enum(categories),
         }),
         params: z.object({
-          gameId: z.string(),
+          gameId: z.coerce.number(),
+        }),
+      })
+      .strict()
+    this.validate(schema, params, body)
+  }
+
+  updateGame(params: any, body: any): void | SchemaError {
+    const schema = z
+      .object({
+        body: z.object({
+          name: z.string().min(3).max(60),
+          description: z.string().max(200),
+        }),
+        params: z.object({
+          gameId: z.coerce.number(),
         }),
       })
       .strict()

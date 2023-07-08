@@ -10,7 +10,6 @@ export default class GameRepositoryPrisma implements GameRepository {
   async get(id: number): Promise<Game> {
     try {
       const result = await this.prisma.game.findFirstOrThrow({ where: { id } })
-
       return new Game(result.name, result.description, result.id)
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError)
@@ -24,10 +23,31 @@ export default class GameRepositoryPrisma implements GameRepository {
     return result.map((item) => new Game(item.name, item.description, item.id))
   }
 
-  async create(game: Game): Promise<Game> {
+  async create(game: Game): Promise<Required<Game>> {
     const result = await this.prisma.game.create({
       data: { description: game.description, name: game.name },
     })
-    return new Game(result.name, result.description, result.id)
+    return new Game(
+      result.name,
+      result.description,
+      result.id,
+    ) as Required<Game>
+  }
+
+  async update(game: Required<Game>): Promise<Game> {
+    try {
+      await this.prisma.game.findUniqueOrThrow({
+        where: { id: game.id },
+      })
+      const result = await this.prisma.game.update({
+        where: { id: game.id },
+        data: { description: game.description, name: game.name },
+      })
+      return new Game(result.name, result.description, game.id)
+    } catch (error) {
+      if (error instanceof Prisma.PrismaClientKnownRequestError)
+        throw new NotFoundError(error.message)
+      else throw error
+    }
   }
 }
