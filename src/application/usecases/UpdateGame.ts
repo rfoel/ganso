@@ -6,6 +6,6 @@ export default class CreateGame {
 
   async execute(id: number, name: string, description: string): Promise<Game> {
     const game = new Game(name, description, id)
-    return this.repository.update(game as Required<Game>)
+    return await this.repository.update(game as Required<Game>)
   }
 }

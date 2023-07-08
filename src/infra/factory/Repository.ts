@@ -1,12 +1,13 @@
-import GameRepository from 'domain/repository/Game'
-import GameRepositoryPrisma from 'infra/repository/prisma/Game'
-import GameRepositoryDynamoDB from 'infra/repository/dynamoDB/Game'
-import RepositoryFactory from 'domain/factory/Repository'
-import MissionRepository from 'domain/repository/Mission'
-import MissionRepositoryPrisma from 'infra/repository/prisma/Mission'
-import MissionRepositoryDynamoDB from 'infra/repository/dynamoDB/Mission'
 import { PrismaClient } from '@prisma/client'
 import Dinamo from 'dinamo'
+
+import GameRepository from 'domain/repository/Game'
+import GameRepositoryDynamoDB from 'infra/repository/dynamoDB/Game'
+import GameRepositoryPrisma from 'infra/repository/prisma/Game'
+import MissionRepository from 'domain/repository/Mission'
+import MissionRepositoryDynamoDB from 'infra/repository/dynamoDB/Mission'
+import MissionRepositoryPrisma from 'infra/repository/prisma/Mission'
+import RepositoryFactory from 'domain/factory/Repository'
 
 export default class Repository implements RepositoryFactory {
   game: GameRepository

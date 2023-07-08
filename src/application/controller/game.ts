@@ -1,11 +1,10 @@
-import GameRepository from 'domain/repository/Game'
-
 import CreateGame from 'application/usecases/CreateGame'
+import GameRepository from 'domain/repository/Game'
 import GetGame from 'application/usecases/GetGame'
 import GetGames from 'application/usecases/GetGames'
-import UpdateGame from 'application/usecases/UpdateGame'
 import Http from 'infra/http/Http'
 import SchemaValidator from 'infra/schema/SchemaValidator'
+import UpdateGame from 'application/usecases/UpdateGame'
 
 export default class GameController {
   constructor(

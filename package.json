@@ -9,7 +9,9 @@
     "down": "sh scripts/down.sh",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
     "migrate": "sh scripts/migrate.sh",
-    "test": "sh scripts/test.sh"
+    "test": "sh scripts/test.sh",
+    "test:ci": "sh scripts/ci.sh",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.363.0",

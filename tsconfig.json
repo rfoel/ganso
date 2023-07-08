@@ -8,6 +8,13 @@
     "target": "esnext",
     "module": "esnext",
     "esModuleInterop": true,
-    "baseUrl": "src/"
+    "baseUrl": "src/",
+    "paths": {
+      "application": ["./src/application/*"],
+      "domain": ["./src/domain/*"],
+      "infra": ["./src/infra/*"]
+    },
+    "noImplicitAny": false,
+    "forceConsistentCasingInFileNames": true
   }
 }

@@ -9,4 +9,3 @@ services:
       POSTGRES_PASSWORD: 'ganso'
     ports:
       - '5432:5432'
-

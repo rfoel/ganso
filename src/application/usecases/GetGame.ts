@@ -5,6 +5,6 @@ export default class GetGame {
   constructor(readonly repository: GameRepository) {}
 
   async execute(id: number): Promise<Game> {
-    return this.repository.get(id)
+    return await this.repository.get(id)
   }
 }
