@@ -26,7 +26,7 @@ echo 'Waiting for server to be ready...'
 
 $DIR/wait-for-it.sh "http://localhost:${PORT}" -t 3 -- echo 'Server is ready!'
 
-vitest --watch=false
+vitest --watch=false 
 
 echo 'Cleaning up...'
 

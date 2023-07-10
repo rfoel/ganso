@@ -24,6 +24,10 @@ export default class MissionRepositoryDynamoDB implements MissionRepository {
   }
 
   async list(gameId: number): Promise<Mission[]> {
+    const game = await this.dinamo.get({
+      key: { type: 'game', id: gameId },
+    })
+    if (!game) throw new NotFoundError('No Game found')
     const result = await this.dinamo.query<Mission>({
       key: { gameId },
       indexName: 'missionIndex',

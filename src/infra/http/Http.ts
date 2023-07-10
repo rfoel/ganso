@@ -1,5 +1,5 @@
 export default interface Http {
-  on(
+  rest(
     method: 'get' | 'post' | 'put',
     url: string,
     callback: (
@@ -7,6 +7,8 @@ export default interface Http {
       body: any,
     ) => Promise<{ status: number; body: any }>,
   ): void
+
+  graphql(schema: any): void
 
   listen(port: number): void
 }

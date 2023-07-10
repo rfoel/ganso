@@ -13,7 +13,7 @@ export default class MissionController {
     readonly gameRepository: GameRepository,
     readonly schemaValidator: SchemaValidator,
   ) {
-    http.on(
+    http.rest(
       'get',
       '/games/:gameId/missions/:missionId',
       async (params, body) => {
@@ -27,14 +27,14 @@ export default class MissionController {
       },
     )
 
-    http.on('get', '/games/:gameId/missions', async (params, body) => {
+    http.rest('get', '/games/:gameId/missions', async (params, body) => {
       schemaValidator.getMissions(params, body)
       const usecase = new GetMissions(missionRepository)
       const missions = await usecase.execute(Number(params.gameId))
       return { status: 200, body: missions }
     })
 
-    http.on('post', '/games/:gameId/missions', async (params, body) => {
+    http.rest('post', '/games/:gameId/missions', async (params, body) => {
       schemaValidator.createMission(params, body)
       const usecase = new CreateMission(missionRepository, gameRepository)
       const mission = await usecase.execute(

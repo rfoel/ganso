@@ -44,7 +44,7 @@ export default class GameRepositoryDynamoDB implements GameRepository {
   }
 
   async update(game: Required<Game>): Promise<Required<Game>> {
-    const existingGame = await this.dinamo.get({
+    const existingGame = await this.dinamo.get<Game>({
       key: { type: 'game', id: game.id },
     })
     if (!existingGame) throw new NotFoundError('No Game found')
@@ -54,8 +54,8 @@ export default class GameRepositoryDynamoDB implements GameRepository {
         id: game.id,
       },
       item: {
-        description: game.description,
-        name: game.name,
+        name: game.name ?? existingGame.name,
+        description: game.description ?? existingGame.description,
       },
     })
     return new Game(result.name, result.description, game.id) as Required<Game>

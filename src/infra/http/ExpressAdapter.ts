@@ -1,4 +1,6 @@
 import express, { Application, Request, Response } from 'express'
+import cors from 'cors'
+import { createHandler } from 'graphql-http/lib/use/express'
 
 import Http from './Http'
 import NotFoundError from 'infra/errors/NotFoundError'
@@ -10,9 +12,10 @@ export default class ExpressAdapter implements Http {
   constructor() {
     this.app = express()
     this.app.use(express.json())
+    this.app.use(cors())
   }
 
-  on(
+  rest(
     method: 'get' | 'post' | 'put',
     url: string,
     callback: (
@@ -38,6 +41,10 @@ export default class ExpressAdapter implements Http {
         }
       }
     })
+  }
+
+  graphql(schema: any) {
+    this.app.all('/graphql', createHandler({ schema }))
   }
 
   listen(port: number): void {

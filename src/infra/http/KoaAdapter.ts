@@ -1,6 +1,9 @@
+import cors from '@koa/cors'
 import Koa from 'koa'
-import Router from 'koa-router'
-import bodyparser from 'koa-bodyparser'
+import Router from '@koa/router'
+import bodyParser from '@koa/bodyparser'
+import mount from 'koa-mount'
+import { createHandler } from 'graphql-http/lib/use/koa'
 
 import Http from './Http'
 import NotFoundError from 'infra/errors/NotFoundError'
@@ -13,11 +16,12 @@ export default class KoaAdapter implements Http {
   constructor() {
     this.app = new Koa()
     this.router = new Router()
-    this.app.use(bodyparser())
+    this.router.use(bodyParser())
+    this.app.use(cors())
     this.app.use(this.router.routes())
   }
 
-  on(
+  rest(
     method: 'get' | 'post' | 'put',
     url: string,
     callback: (
@@ -52,6 +56,17 @@ export default class KoaAdapter implements Http {
         }
       }
     })
+  }
+
+  graphql(schema: any) {
+    this.app.use(
+      mount(
+        '/graphql',
+        createHandler({
+          schema,
+        }),
+      ),
+    )
   }
 
   listen(port: number): void {
