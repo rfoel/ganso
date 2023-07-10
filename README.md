@@ -50,6 +50,10 @@ For this project, in addition to the required technologies (Express, TypeScript,
 
 I've integrated this GitHub repository with Postman so I can test the API with the generated [collection](postman/collections/ganso.json) based on the [Open API definition](postman/schemas/index.yaml). It can be imported easily to the Postman app. There is a documentation on how to do it [here](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/#importing-data-into-postman).
 
+## Apollo Studio
+
+The GraphQL schema can be viewed [here](https://studio.apollographql.com/public/Ganso/variant/current). This is a published version of the schema. It can also be viewed using [Apollo Explorer](https://studio.apollographql.com/sandbox/explorer) with the local server running.
+
 ## Possible improvements
 
 - Better error messages. I have done a simple treatment for the errors I could find, it is not the best messages but they are clear about what went wrong;
